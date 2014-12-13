@@ -72,7 +72,7 @@ If needed, you can simply restart the script and it will pick up where it left. 
 In its final reincarnation you need to activate the job to retrieve new spots every hour:
 
     docker stop docker-spotweb && docker rm docker-spotweb
-    docker run --name docker-spotweb -e ACTIVATE_AUTO_RETRIEVE=true -p 8080:80 -v /path/to/dbsettings.inc.php:/var/www/site/dbsettings.inc.php -d andyverbunt/docker-spotweb
+    docker run --name docker-spotweb -e ACTIVATE_AUTO_RETRIEVE=true -p 8080:80 -v /path/to/dbsettings.inc.php:/var/www/site/spotweb/dbsettings.inc.php -d andyverbunt/docker-spotweb
 
 ## Summary
 
