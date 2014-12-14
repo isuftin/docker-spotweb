@@ -49,7 +49,7 @@ Now configure the system. Make sure the credentials for the database connection 
 	$dbsettings['pass'] = 'spotweb';
 
 
-Then start it again with the settings file mounted as a data volume. Make sure you use the correct path to dbsettings.inc.php:
+Then start it again with the settings file mounted as a data volume. Make sure you use the correct path to dbsettings.inc.php as the command will not fail but you'll get some weird errors in your browser:
 
     docker stop docker-spotweb && docker rm docker-spotweb
     docker run --name=docker-spotweb -p 8080:80 -v /path/to/dbsettings.inc.php:/var/www/site/spotweb/dbsettings.inc.php -d andyverbunt/docker-spotweb
@@ -69,10 +69,7 @@ Now you can finally populate your installation with spots:
 
 If needed, you can simply restart the script and it will pick up where it left. It will take a while (hours, days, ...) depending on your settings.
 
-In its final reincarnation you need to activate the job to retrieve new spots every hour:
-
-    docker stop docker-spotweb && docker rm docker-spotweb
-    docker run --name docker-spotweb -e ACTIVATE_AUTO_RETRIEVE=true -p 8080:80 -v /path/to/dbsettings.inc.php:/var/www/site/spotweb/dbsettings.inc.php -d andyverbunt/docker-spotweb
+The container will automatically retrieve new spots every hour (unless it's already in progress).
 
 ## Summary
 

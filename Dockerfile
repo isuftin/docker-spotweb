@@ -20,9 +20,6 @@ ADD cron.cfg /root/cron.cfg
 # Use the crontab file
 RUN crontab /root/cron.cfg
 
-ADD conditional_retrieve.sh /root/conditional_retrieve.sh
-RUN chmod +x /root/conditional_retrieve.sh
-
 # Start cron
 RUN cron
 
