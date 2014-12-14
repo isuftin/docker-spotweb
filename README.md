@@ -63,13 +63,11 @@ Once this is done, you still don't have any spots, but all the settings are pers
 
     docker run -rm --volumes-from docker-spotweb-db -v $(pwd):/backup busybox tar cvf /backup/backup-docker-spotweb-db.tar /var/lib/mysql
 
-Now you can finally populate your installation with spots:
+The container will retrieve new spots every hour. If you don't want to wait for it to start automatically, you can start it now: 
 
     docker exec -t -i docker-spotweb /usr/bin/php /var/www/site/spotweb/retrieve.php
 
 If needed, you can simply restart the script and it will pick up where it left. It will take a while (hours, days, ...) depending on your settings.
-
-The container will automatically retrieve new spots every hour (unless it's already in progress).
 
 ## Summary
 
