@@ -33,11 +33,11 @@ First clone the repository, then build the container:
 
 And run it. I'm giving it a name so it's easy to reference it when it needs to be stopped:
 
-    docker run --name=docker-spotweb -p 8080:80 -d andyverbunt/docker-spotweb
+    docker run --name=docker-spotweb -p 9000:80 -d andyverbunt/docker-spotweb
 
 Point your browser to the install page. Your ip address may vary (use 'boot2docker ip' on OSX):
 
-    http://192.168.59.103:8080/spotweb/install.php
+    http://192.168.59.103:9000/spotweb/install.php
 
 Now configure the system. Make sure the credentials for the database connection match those in the instructions above. Create the system. You will also have to create the dbsettings.inc.php file on your host system with the content as instructed. It will look something like this:
 
@@ -52,11 +52,11 @@ Now configure the system. Make sure the credentials for the database connection 
 Then start it again with the settings file mounted as a data volume. Make sure you use the correct path to dbsettings.inc.php as the command will not fail but you'll get some weird errors in your browser:
 
     docker stop docker-spotweb && docker rm docker-spotweb
-    docker run --name=docker-spotweb -p 8080:80 -v /path/to/dbsettings.inc.php:/var/www/site/spotweb/dbsettings.inc.php -d andyverbunt/docker-spotweb
+    docker run --name=docker-spotweb -p 9000:80 -v /path/to/dbsettings.inc.php:/var/www/site/spotweb/dbsettings.inc.php -d andyverbunt/docker-spotweb
 
 Point your browser to the running spotweb:
 
-    http://192.168.59.103:8080/spotweb
+    http://192.168.59.103:9000/spotweb
 
 Login with the credentials you provided during install. Take the time to configure the preferences and the settings.
 Once this is done, you still don't have any spots, but all the settings are persisted in the database. This is a good time to make a backup:
@@ -79,7 +79,7 @@ When you followed the instructions above, you should have three containers runni
 
 This is where you need to be (ip address may be different):
 
-    http://192.168.59.103:8080/spotweb
+    http://192.168.59.103:9000/spotweb
 
 If you ever reboot your machine, only restart the last two containers! The first one does not need to run since it contains only the data.
 

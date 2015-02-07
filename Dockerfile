@@ -35,6 +35,9 @@ RUN apt-get -y install git
 # Install spotweb using git
 RUN git clone https://github.com/Spotweb/Spotweb.git /var/www/site/spotweb
 
+RUN chmod -R 777 /var/www/site/spotweb
+RUN chown -R root:www-data /var/www/site/spotweb
+
 # Update the default apache site with the config we created
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
