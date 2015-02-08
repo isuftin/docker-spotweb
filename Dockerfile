@@ -25,6 +25,7 @@ RUN cron
 
 # Enable apache mods
 RUN a2enmod php5
+RUN a2enmod rewrite
 
 # Update the php.ini file
 RUN sed -i "s/^;date.timezone =.*/date.timezone = Europe\/Brussels/" /etc/php5/apache2/php.ini
