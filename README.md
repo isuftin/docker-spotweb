@@ -15,7 +15,7 @@ I opted to use a data volume container as opposed to mounting a host directory a
 
 Let's set up a data-only container:
 
-    docker run --name docker-spotweb-db -d -v /var/lib/mysql tutum/ubuntu-trusty
+    docker run --name docker-spotweb-db -d -v /var/lib/mysql tutum/ubuntu:trusty
 
 Next, set up the mysql server using this volume:
 
