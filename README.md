@@ -15,7 +15,7 @@ I opted to use a data volume container as opposed to mounting a host directory a
 
 Let's set up a data-only container:
 
-    docker run --name docker-spotweb-db -d -v /var/lib/mysql tutum/ubuntu:trusty
+    docker create -v /var/lib/mysql --name docker-spotweb-db tutum/ubuntu:trusty /bin/true
 
 Next, set up the mysql server using this volume:
 
@@ -29,11 +29,11 @@ The database is still empty at this point. I'll show you how to create backups l
 
 First clone the repository, then build the container:
 
-    docker build -t andyverbunt/docker-spotweb .
+    docker build -t solidrhino/spotweb .
 
 And run it. I'm giving it a name so it's easy to reference it when it needs to be stopped:
 
-    docker run --name=docker-spotweb -p 9000:80 -d andyverbunt/docker-spotweb
+    docker run --name=docker-spotweb -p 9000:80 -d solidrhino/spotweb
 
 Point your browser to the install page. Your ip address may vary (use 'boot2docker ip' on OSX):
 
